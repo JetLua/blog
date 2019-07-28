@@ -1,0 +1,61 @@
+:root {
+  --grid-gutter: 0;
+}
+
+* {
+  outline: none;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+
+i {
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+  max-width: 100%;
+}
+
+.container {
+  max-width: 100%;
+}
+
+.app {
+  height: 100%;
+  margin: 0;
+}
+
+.label {
+  margin: 0 1rem;
+}
+
+.option {
+  margin-bottom: 1rem;
+  input {
+    margin-right: .5rem;
+  }
+  label {
+    margin-right: 1rem;
+  }
+}
+
+textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  font-family: custom, monospace;
+}
+
+canvas {
+  display: block;
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  background-image:
+    linear-gradient(45deg, #ccc 25%, transparent 25%),
+    linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%),
+    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+}
