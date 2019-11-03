@@ -2,6 +2,7 @@ const
   os = require('os'),
   path = require('path'),
   webpack = require('webpack'),
+  {VueLoaderPlugin} = require('vue-loader'),
   HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
@@ -9,6 +10,8 @@ const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: [
+    'bootstrap/dist/css/bootstrap.min.css',
+    'prismjs/themes/prism.css',
     './src/app.js',
     './src/style.less'
   ],
@@ -22,6 +25,11 @@ module.exports = {
     alias: {
       '@': path.resolve('.')
     }
+  },
+
+  devServer: {
+    hot: true,
+    host: '0.0.0.0',
   },
 
   devtool: isProd ? false : 'source-map',
@@ -46,18 +54,36 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        // exclude: /node_modules/,
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader']
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+      },
+      {
+        test: /\.txt$/,
+        use: ['raw-loader']
+      },
+      {
+        test: /\.(jpg|png|jpeg|gif|svg)$/,
+        use: ['url-loader']
       }
     ]
   },
 
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
+
   plugins: [
+    new VueLoaderPlugin(),
+
     new webpack.ProvidePlugin({
-      PIXI: 'pixi.js',
+      Prism: 'prismjs',
+      Router: ['vue-router', 'default'],
       Vue: ['vue/dist/vue.esm.js', 'default'],
     }),
 

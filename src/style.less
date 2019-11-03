@@ -1,61 +1,89 @@
-:root {
-  --grid-gutter: 0;
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 * {
-  outline: none;
+  font-size: 14px;
+  line-height: 2;
 }
-
-.flex-column {
-  flex-direction: column;
-}
-
 
 i {
   font-style: normal;
 }
 
-html, body {
-  height: 100%;
-  max-width: 100%;
-}
-
-.container {
-  max-width: 100%;
-}
-
-.app {
-  height: 100%;
-  margin: 0;
-}
-
-.label {
-  margin: 0 1rem;
-}
-
-.option {
-  margin-bottom: 1rem;
-  input {
-    margin-right: .5rem;
-  }
-  label {
-    margin-right: 1rem;
-  }
-}
-
-textarea {
+article {
+  padding: 16px;
+  max-width: 800px;
   width: 100%;
-  margin-bottom: 1rem;
-  font-family: custom, monospace;
-}
+  margin: auto;
+  white-space: normal;
+  word-wrap: normal;
+  word-break: break-all;
 
-canvas {
-  display: block;
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-  background-image:
-    linear-gradient(45deg, #ccc 25%, transparent 25%),
-    linear-gradient(-45deg, #ccc 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #ccc 75%),
-    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  p {
+    padding: 0;
+    margin-bottom: 0;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  pre {
+    border-radius: 6px;
+    margin: 0 0 16px !important;
+    overflow: auto;
+    display: block;
+    white-space: pre;
+
+    code {
+      display: -webkit-box;
+      overflow: auto;
+      white-space: pre;
+    }
+  }
+
+  ul {
+    list-style-type: circle;
+    padding: 0 0 0 32px;
+    margin: 0 0 16px 0;
+    li {
+      padding: 6px 0;
+    }
+  }
+
+  h3 {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #ccc;
+    &:not(:first-child) {
+      margin-top: 32px;
+    }
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  blockquote {
+    margin-bottom: 16px;
+    padding: 16px;
+    background: #fbfbfb;
+    color: #666;
+    border-left: 6px solid #ccc;
+  }
 }

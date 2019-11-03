@@ -1,52 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
   <head>
-    <title>Bitfont</title>
-    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editor</title>
   </head>
   <body>
-    <div id="__preload"></div>
-    <section class="row app">
-      <canvas class="col"></canvas>
-      <section class="col row flex-column">
-        <p class="row">
-          <i class="label">字号:</i><input class="col" v-model="size" type="text">
-        </p>
-        <p class="row">
-          <i class="label">字体:</i>
-          <input class="col" v-model="name" type="text">
-          <button class="button outline primary" @click="choose">自定义字体</button>
-        </p>
-        <p class="row">
-          <i class="label">行高:</i><input class="col" v-model="height" type="text">
-        </p>
-        <p class="row">
-          <i class="label">字距:</i><input class="col" v-model="spacing" type="text">
-        </p>
-        <p class="row">
-          <i class="label">限宽:</i><input class="col" v-model="maxWidth" type="text">
-        </p>
-        <div class="row option">
-          <i class="label">选项:</i>
-          <div class="col row is-vertical-align">
-            <input type="checkbox" id="outline" v-model="outline">
-            <label for="outline">边框</label>
-            <input type="color" id="color" v-model="color">
-            <label for="color">颜色</label>
-          </div>
-        </div>
-        <div class="row">
-          <i class="label">文本:</i>
-          <div class="col">
-            <textarea v-model="text"></textarea>
-            <div class="row">
-              <button class="button outline primary" @click="add">Add</button>
-              <button class="button outline primary" @click="clean">Clean</button>
-              <button class="button outline primary" @click="download">Download</button>
-            </div>
-          </div>
-        </div>
-
-      </section>
+    <section class="app">
+      <router-view></router-view>
     </section>
   </body>
 </html>
