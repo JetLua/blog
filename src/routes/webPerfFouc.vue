@@ -13,7 +13,7 @@
       <h3>原因分析</h3>
       <p>要了解 <code>FOUC</code> 的原因，首先我们要了解一下浏览器渲染的原理。</p>
       <h4>浏览器的渲染流程</h4>
-      <img src="@/static/images/webPerfFouc/1.svg" alt="">
+      <img src="static/images/webPerfFouc/1.svg" alt="">
       <p>值得注意的是，整个渲染过程是同步进行的。也就是说，浏览器一边解析 <code>HTML</code>，一边构建渲染树，构建一部分，就会把当前已有的元素渲染出来。如果这个时候外部样式并没有加载完成，渲染出来的就是浏览器默认样式了。</p>
       <h4>脚本和样式的执行顺序</h4>
 
@@ -38,7 +38,7 @@
       <p>一般来说，如果 <code>FP</code> 和 <code>FCP</code> 同时发生，页面就不会出现闪烁。当然也有例外，如果 <code>FCP</code> 发生的时候，所需的样式依然没有加载完成，那么 <code>FOUC</code> 依然会出现，这种情况一般发生于，<code>CSS</code> 不是通过 <code>&lt;link&gt;</code> 标签加载的，而是使用 <code>JavaScript</code> 动态插入的。</p>
 
       <p><code>FP</code> 和 <code>FCP</code> 发生的时机可以通过 <code>Chrome</code> 的 <code>performance</code> 来观察：</p>
-      <img src="@/static/images/webPerfFouc/2.png" alt="">
+      <img src="static/images/webPerfFouc/2.png" alt="">
       <p>这里的 <code>DCL</code> 是 <code>DOMContentLoaded</code> 事件，其他的节点这里就不详细展开了。</p>
 
       <h4>绘制的时机</h4>
@@ -49,14 +49,14 @@
           <p>一个简单的例子：</p>
           <p>对于一个简单 <code>HTML</code> 页面，当 <code>CSS</code> 加载完成，且所有的 <code>DOM</code> 都同步解析完成，才会触发第一次渲染。也就是说，<code>FP</code> 紧跟在 <code>DCL</code> 后发生。</p>
           <pre><code v-text="snippets[0]" class="lang-html"></code></pre>
-          <img src="@/static/images/webPerfFouc/3.png" alt="">
+          <img src="static/images/webPerfFouc/3.png" alt="">
           <p>当 <code>JavaScript</code> 加入之后，就变得不一样了。</p>
         </li>
 
         <li>
           <p>当浏览器开始执行一个 <code>&lt;script&gt;</code> 时，<code>DOM</code> 的构建会停下来，因为我们的脚本很可能对当前的 <code>DOM</code> 进行查询和操作。所以这个时候，就会将已经构建好的渲染树先渲染出来。</p>
           <pre><code v-text="snippets[1]" class="lang-html"></code></pre>
-          <img src="@/static/images/webPerfFouc/4.png" alt="">
+          <img src="static/images/webPerfFouc/4.png" alt="">
           <p>值得一提的是，如果 <code>DOM</code> 树的内容为空，浏览器会直接跳过本次渲染。</p>
 
           <p>所以对于 <code>SPA</code>，更好的做法是在脚本中去动态创建顶层的容器，而不是写到 <code>HTML</code> 中。如果是在 <code>HTML</code> 先写一个 <code>loading</code> 动画提升体验就另说了。</p>
@@ -69,7 +69,7 @@
         <li>
           <p>多个 <code>&lt;script&gt;</code> 标签放在 <code>&lt;body&gt;</code> 中，会多次触发 <code>paint</code> 。原因和上面说过的一样，每次执行一个 <code>&lt;script&gt;</code> 的时候，浏览器都会暂停 <code>DOM</code> 树的构建，先把当前的渲染树渲染出来。所以如果前面的 <code>&lt;script&gt;</code> 创建了 <code>DOM</code> 元素，后面的 <code>&lt;script&gt;</code> 执行前一定会先触发 <code>paint</code>，如果这时发生样式的变化，就会出现 <code>FOUC</code>。</p>
           <pre><code v-text="snippets[2]" class="lang-html"></code></pre>
-          <img src="@/static/images/webPerfFouc/5.png" alt="">
+          <img src="static/images/webPerfFouc/5.png" alt="">
           <P>可以看到，这里的三个 <code>&lt;script&gt;</code> 标签导致了额外的三次 <code>reflow</code> / <code>paint</code>。</P>
           <P>这个问题不容忽视，因为有时候费了很大劲做的优化，一次 <code>Webpack</code> 打包就可以让你前功尽弃。比如使用了 <code>svg-sprite-loader</code> 之后，把 <code>SVG</code> 图标资源打包到 <code>vendor.js</code> 中，会得到：</P>
           <pre><code v-text="snippets[3]" class="lang-html"></code></pre>
