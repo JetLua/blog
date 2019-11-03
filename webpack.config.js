@@ -3,12 +3,12 @@ const
   path = require('path'),
   webpack = require('webpack'),
   {VueLoaderPlugin} = require('vue-loader'),
-  HtmlWebpackPlugin = require('html-webpack-plugin')
+  HtmlWebpackPlugin = require('html-webpack-plugin'),
+  MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const isProd = process.argv.includes('-p')
 
-const isProd = process.env.NODE_ENV === 'production'
-
-module.exports = {
+const conf = {
   entry: [
     'bootstrap/dist/css/bootstrap.min.css',
     'prismjs/themes/prism.css',
@@ -54,12 +54,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        // exclude: /node_modules/,
-        use: ['vue-style-loader', 'css-loader', 'postcss-loader']
+        use: [isProd ? MiniCssExtractPlugin.loader : 'vue-style-loader', 'css-loader', 'postcss-loader']
       },
       {
         test: /\.less$/,
-        use: ['vue-style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+        use: [isProd ? MiniCssExtractPlugin.loader : 'vue-style-loader', 'css-loader', 'postcss-loader', 'less-loader']
       },
       {
         test: /\.txt$/,
@@ -99,3 +98,17 @@ module.exports = {
 
   mode: isProd ? 'production' : 'development'
 }
+
+if (isProd) {
+  conf.plugins.push(new MiniCssExtractPlugin({
+    filename: 'style.[contenthash].css'
+  }))
+
+  conf.optimization = {
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
+}
+
+module.exports = conf
