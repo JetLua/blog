@@ -24,13 +24,15 @@
       <p>那么到底什么是 <code>MD</code> ？</p>
       <p>假设有两个凸多边形：</p>
       <pre><code v-text="snippets[0]" class="lang-js"></code></pre>
-      <p>那么它们的位置看起应该像下图一样。</p>
+      <p>那么它们的位置看起应该像下图这样。</p>
       <img src="static/images/collisionDetection/gjk/3.png" alt="">
       <p><code>MD</code> 就是 <code>s1</code> 与 <code>s2</code> 所有点的差。</p>
       <pre><code v-text="snippets[1]" class="lang-js"></code></pre>
       <pre><code v-text="snippets[2]" class="lang-js"></code></pre>
       <p>这些点的布局如下图所示：</p>
       <img src="static/images/collisionDetection/gjk/4.png" alt="">
+
+      <h3>Convex hull</h3>
     </article>
   </section>
 </template>

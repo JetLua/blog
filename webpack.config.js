@@ -18,7 +18,7 @@ const conf = {
 
   output: {
     path: path.resolve('dist'),
-    filename: 'app.js'
+    filename: 'app.[contenthash].js'
   },
 
   resolve: {
@@ -69,12 +69,6 @@ const conf = {
         use: ['url-loader']
       }
     ]
-  },
-
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
   },
 
   plugins: [
