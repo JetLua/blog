@@ -6,7 +6,7 @@ const
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const isProd = process.argv.includes('-p')
+const prod = process.argv.includes('-p')
 
 const conf = {
   entry: [
@@ -18,7 +18,7 @@ const conf = {
 
   output: {
     path: path.resolve('dist'),
-    filename: 'app.[contenthash].js'
+    filename: `app.[${prod ? 'contenthash' : 'hash'}].js`
   },
 
   resolve: {
@@ -32,7 +32,7 @@ const conf = {
     host: '0.0.0.0',
   },
 
-  devtool: isProd ? false : 'source-map',
+  devtool: prod ? false : 'source-map',
 
   stats: 'errors-only',
 
@@ -54,11 +54,11 @@ const conf = {
       },
       {
         test: /\.css$/,
-        use: [isProd ? MiniCssExtractPlugin.loader : 'vue-style-loader', 'css-loader', 'postcss-loader']
+        use: [prod ? MiniCssExtractPlugin.loader : 'vue-style-loader', 'css-loader', 'postcss-loader']
       },
       {
         test: /\.less$/,
-        use: [isProd ? MiniCssExtractPlugin.loader : 'vue-style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+        use: [prod ? MiniCssExtractPlugin.loader : 'vue-style-loader', 'css-loader', 'postcss-loader', 'less-loader']
       },
       {
         test: /\.txt$/,
@@ -75,6 +75,7 @@ const conf = {
     new VueLoaderPlugin(),
 
     new webpack.ProvidePlugin({
+      PIXI: 'pixi.js',
       Prism: 'prismjs',
       Router: ['vue-router', 'default'],
       Vue: ['vue/dist/vue.esm.js', 'default'],
@@ -90,10 +91,10 @@ const conf = {
     })
   ],
 
-  mode: isProd ? 'production' : 'development'
+  mode: prod ? 'production' : 'development'
 }
 
-if (isProd) {
+if (prod) {
   conf.plugins.push(new MiniCssExtractPlugin({
     filename: 'style.[contenthash].css'
   }))
