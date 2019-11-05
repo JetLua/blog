@@ -1,0 +1,7 @@
+MD(s1, s2):
+  s3 = []
+  for p1 in s1:
+    for p2 in s2:
+      s3.push(p1 - p2)
+
+  return s3

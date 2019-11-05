@@ -1,0 +1,27 @@
+function wrap(points) {
+  const hull = []
+
+  let current = {x: Infinity}
+  for (const p of points) {
+    if (p.x < current.x) current = p
+  }
+
+  let i = 0, end
+
+  while (true) {
+    hull[i] = current
+    end = points[0]
+
+    for (let j = 1; j < points.length; j++) {
+      if ((end.x === current.x && end.y === current.y) ||
+        inline(points[j], hull[i], end) > 0) {
+        end = points[j]
+      }
+    }
+    i += 1
+    current = end
+
+    if (end.x === hull[0].x && end.y === hull[0].y) break
+  }
+  return hull
+}
