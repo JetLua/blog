@@ -1,7 +1,31 @@
 Vue.use(Router)
 
 export default [
-  {path: '/webPerfFouc', component: () => import('./webPerfFouc.vue')},
-  {path: '/collisionDetection/GJK/1', component: () => import('./collisionDetection/gjk.1.vue')},
-  {path: '/collisionDetection/GJK/1/demo', component: () => import('./collisionDetection/gjk.1.demo.vue')},
+  {
+    path: '/collisionDetection/GJK/2',
+    component: () => import('./collisionDetection/gjk.2.vue'),
+    meta: {title: '碰撞检测 - GJK(2)'}
+  },
+
+  {
+    path: '/collisionDetection/GJK/1/demo',
+    component: () => import('./collisionDetection/gjk.1.demo.vue')
+  },
+
+  {
+    path: '/collisionDetection/GJK/1',
+    component: () => import('./collisionDetection/gjk.1.vue'),
+    meta: {title: '碰撞检测 - GJK(1)'}
+  },
+
+  {
+    path: '/webPerfFouc',
+    component: () => import('./webPerfFouc.vue'),
+    meta: {title: 'Web性能优化：FOUC'}
+  },
+
+  {
+    path: '/',
+    component: () => import('./entry.vue')
+  },
 ]

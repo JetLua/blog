@@ -100,7 +100,6 @@
 <script>
 
   export default {
-
     data() {
       return {
         snippets: [
