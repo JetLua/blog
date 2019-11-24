@@ -1,0 +1,12 @@
+triple(AC, AB, AB)
+
+function triple(a, b, c) {
+  const
+    e = new Vec3(a.x, a.y, 0),
+    f = new Vec3(b.x, b.y, 0),
+    g = new Vec3(c.x, c.y, 0),
+    h = Vec3.cross(e, f),
+    i = Vec3.cross(h, g)
+
+  return new Vec(i.x, i.y)
+}

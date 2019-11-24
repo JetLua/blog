@@ -92,7 +92,7 @@
         <li><a href="https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics">https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics</a></li>
         <li><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp">https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp</a></li>
       </ul>
-
+      <img class="qr" src="/static/images/qr.jpg" alt="">
     </article>
   </section>
 </template>

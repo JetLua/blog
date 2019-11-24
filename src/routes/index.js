@@ -8,6 +8,11 @@ export default [
   },
 
   {
+    path: '/collisionDetection/GJK/2/demo',
+    component: () => import('./collisionDetection/gjk.2.demo.vue')
+  },
+
+  {
     path: '/collisionDetection/GJK/1/demo',
     component: () => import('./collisionDetection/gjk.1.demo.vue')
   },

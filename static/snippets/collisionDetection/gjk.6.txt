@@ -1,0 +1,24 @@
+class Vec3 {
+  static cross(a, b) {
+    return new Vec3(
+      a.y * b.z - a.z * b.y,
+      a.z * b.x - a.x * b.z,
+      a.x * b.y - a.y * b.x
+    )
+  }
+}
+
+// 垂直于向量 ab, a0
+let direction = Vec3.cross(
+  new Vec3(-10, -8, 0),
+  new Vec3(-9, -6, 0)
+)
+
+// 垂直于向量 direction, ab
+direction = Vec3.cross(
+  direction,
+  new Vec3(-10, -8, 0)
+)
+
+// 再次通过 getSupport 计算点
+getSupport(direction)

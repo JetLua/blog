@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["@babel/env", {"useBuiltIns": "usage", "corejs": 3}]
+    ["@babel/env", {"useBuiltIns": "usage", "corejs": 3, "modules": false}]
   ],
   "plugins": [
     "@babel/syntax-dynamic-import",
@@ -9,6 +9,7 @@
     "@babel/proposal-optional-chaining",
     "@babel/proposal-export-default-from",
     "@babel/proposal-export-namespace-from",
+    "@babel/proposal-nullish-coalescing-operator",
     ["@babel/transform-runtime", {
       "corejs": 3,
       "helpers": false,

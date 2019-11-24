@@ -1,0 +1,24 @@
+function getSupport(direction) {
+  return shapeA.support(direction) - shapeB.support(-1 * direction)
+}
+
+class Shape {
+  support(direction) {
+    let max = -Infinity, p
+    for (const point of this.points) {
+      // 向量的点乘来计算
+      const proj = Vec.dot(point, direction)
+      if (proj > max) {
+        max = proj
+        p = point
+      }
+    }
+    return p
+  }
+}
+
+class Vec {
+  static dot(a, b) {
+    return a.x * b.x + a.y * b.y
+  }
+}

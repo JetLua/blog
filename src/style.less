@@ -23,6 +23,18 @@ article {
   word-wrap: normal;
   word-break: break-all;
 
+  details, summary {
+    outline: none;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  summary {
+    color: #4caf50;
+    font-weight: bold;
+  }
+
   p {
     padding: 0;
     margin-bottom: 0;
