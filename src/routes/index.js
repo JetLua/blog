@@ -2,6 +2,12 @@ Vue.use(Router)
 
 export default [
   {
+    path: '/geneticAlgorithmInLabelPositioning',
+    component: () => import('./geneticAlgorithmInLabelPositioning.vue'),
+    meta: {title: '遗传算法优化标签展示位置'}
+  },
+
+  {
     path: '/collisionDetection/GJK/2',
     component: () => import('./collisionDetection/gjk.2.vue'),
     meta: {title: '碰撞检测 - GJK(2)'}
