@@ -10,4 +10,4 @@
 
 ***
 
-* [GLOSSORY](glossory.md)
+* [Glossary](glossary.md)
