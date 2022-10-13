@@ -11,6 +11,12 @@ const hierarchy = new cv.Mat()
 cv.findContours(im, contours, hierarchy, cv.RETR_TREE, cv.CHAIN_APPROX_NONE)
 ```
 
-```markup
-cv.RETR_TREE: 获取轮廓层级关系
-```
+| Mode(轮廓的检索模式)     | Method(轮廓的近似方法)                   |
+| ----------------- | --------------------------------- |
+| cv.RETR\_EXTERNAL | 只检测最外层轮廓                          |
+| cv.RETR\_TREE     | 获取轮廓层级关系                          |
+| cv.RETR\_LIST     | 检测所有的轮廓，包括内围、外围轮廓，但是检测到的轮廓不建立等级关系 |
+|                   |                                   |
+
+
+
