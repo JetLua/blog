@@ -1,4 +1,2 @@
-# GLOSSORY
-
 # JET
 ok
