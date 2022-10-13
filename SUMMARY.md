@@ -7,3 +7,7 @@
 ## 实战 <a href="#example" id="example"></a>
 
 * [位图转矢量图](example/bitmap-to-svg.md)
+
+***
+
+* [GLOSSORY](glossory.md)
