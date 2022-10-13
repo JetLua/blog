@@ -11,4 +11,6 @@ const hierarchy = new cv.Mat()
 cv.findContours(im, contours, hierarchy, cv.RETR_TREE, cv.CHAIN_APPROX_NONE)
 ```
 
-\`cv.RETR\_TREE\`: ok
+```markup
+cv.RETR_TREE: 获取轮廓层级关系
+```
